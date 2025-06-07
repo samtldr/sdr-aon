@@ -19,18 +19,18 @@ public class FindArrayMain {
 
     private static int findArrayIndex(int[] arr1, int[] arr2) {
 
-        if(arr1==null || arr2==null || arr1.length==0 || arr2.length==0) return -1;
+        if(arr1==null || arr2==null || arr1.length==0 || arr2.length==0) return -1; //edge cases, null or empty arrays. Exploit lazy validation to check for null first, before checking length (will result in exception)
 
-        for(int i = 0; i < arr1.length; i++) {
+        for(int i = 0; i < arr1.length; i++) { //iterate through all nums in arr1
 
-            int j = i, k = 0;
+            int j = i, k = 0; // create two new pointers, one to start at i(to continue interating through arr1 but not touching i) and k (to iterate through arr2)
             while(arr1[j++]==arr2[k++]) {
-                if(k==arr2.length) {
-                    return i;
+                if(k==arr2.length) { //if we get to the end of arr2, then we've found the full array within arr1!
+                    return i; //return i (original index untouched, thanks to 'j' being created)
                 }
             }
         }
 
-        return -1;
+        return -1; //if we get through the whole array then we haven't found it
     }
 }
