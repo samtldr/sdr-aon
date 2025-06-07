@@ -23,11 +23,8 @@ public class FindArrayMain {
 
         for(int i = 0; i < arr1.length; i++) {
 
-            int j = i;
-            int k = 0;
-            while(arr1[j]==arr2[k]) {
-                k++;
-                j++;
+            int j = i, k = 0;
+            while(arr1[j++]==arr2[k++]) {
                 if(k==arr2.length) {
                     return i;
                 }
